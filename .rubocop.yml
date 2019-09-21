@@ -64,8 +64,7 @@ Layout/EmptyLineAfterMagicComment:
   Enabled: true
 
 Layout/EmptyLinesAroundAccessModifier:
-  Enabled: true
-  EnforcedStyle: only_before
+  Enabled: false
 
 Layout/EmptyLinesAroundBlockBody:
   Enabled: true
@@ -93,7 +92,6 @@ Layout/IndentFirstArgument:
 # extra level of indentation.
 Layout/IndentationConsistency:
   Enabled: true
-  EnforcedStyle: indented_internal_methods
 
 # Two spaces, no tabs (for indentation).
 Layout/IndentationWidth:
