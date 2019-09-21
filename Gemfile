@@ -34,6 +34,8 @@ group :development, :test do
   gem 'brakeman', '4.6.1'
   gem 'rubocop-rails', '~> 2.3', '>= 2.3.2'
   gem 'rubocop-performance', '~> 0.0.0'
+  gem 'factory_bot_rails', '~> 5.0', '>= 5.0.2'
+  gem 'faker', '~> 2.4'
 end
 
 group :development do
