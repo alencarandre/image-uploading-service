@@ -29,6 +29,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.4'
+  gem 'shoulda-matchers', '~> 4.1', '>= 4.1.2'
   gem 'rspec_junit_formatter', '~> 0.2.3'
   gem 'brakeman', '4.6.1'
   gem 'rubocop-rails', '~> 2.3', '>= 2.3.2'
