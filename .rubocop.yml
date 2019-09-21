@@ -16,6 +16,7 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'bin/**/*'
+    - 'vendor/**/*'
 
 Performance:
   Exclude:
