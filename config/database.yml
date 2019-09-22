@@ -85,5 +85,6 @@ test:
 production:
   <<: *default
   database: image_uploading_service_production
-  username: image_uploading_service
+  host: <%= ENV['IMAGE_UPLOADING_SERVICE_DATABASE_HOST'] %>
+  username: <%= ENV['IMAGE_UPLOADING_SERVICE_DATABASE_USER'] %>
   password: <%= ENV['IMAGE_UPLOADING_SERVICE_DATABASE_PASSWORD'] %>

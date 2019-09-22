@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -e
+
+DB_HOST=$IMAGE_UPLOADING_SERVICE_DATABASE_HOST
+DB_USER=$IMAGE_UPLOADING_SERVICE_DATABASE_USER
+DB_PASS=$IMAGE_UPLOADING_SERVICE_DATABASE_PASSWORD
+
+while ! PGPASSWORD="$DB_PASS" psql -h $DB_HOST -U $DB_USER -c "\q"; do
+  echo "Awaiting postgres up..."
+  sleep 5
+done
+
+echo "Postgres is up, yeh"
+
+if ! PGPASSWORD="$DB_PASS" psql -h $DB_HOST -U $DB_USER -c "\l" | grep image_uploading_service; then
+  echo "Creating database"
+  bundle exec rake db:create
+
+  echo "Loading database schema"
+  bundle exec rake db:schema:load
+fi
+
+echo "Runing migration"
+bundle exec rake db:migrate
+
+bundle exec rails s -b 0.0.0.0 -p $PORT
