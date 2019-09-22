@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_21_141455) do
+ActiveRecord::Schema.define(version: 2019_09_22_161147) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(version: 2019_09_21_141455) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "images", force: :cascade do |t|
+    t.string "description"
+    t.bigint "owner_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["owner_id"], name: "index_images_on_owner_id"
+  end
+
   create_table "owners", force: :cascade do |t|
     t.citext "name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -45,4 +53,5 @@ ActiveRecord::Schema.define(version: 2019_09_21_141455) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "images", "owners"
 end

@@ -3,8 +3,7 @@ FactoryBot.define do
     name { Faker::Name.unique.name }
 
     after :build do |owner|
-      attachment = { io: StringIO.new('attachment'), filename: 'file.jpg', content_type: 'image/jpeg' }
-      owner.images.attach(attachment)
+      owner.images << FactoryBot.build(:image) if owner.images.blank?
     end
   end
 end
