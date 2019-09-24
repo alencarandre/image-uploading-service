@@ -42,10 +42,11 @@ Production run under docker and is divided on 2 components: database (postgres) 
 
 #### Enviroment variables
 
-It's need to setup some environment variables
+It need to setup some environment variables
 
 `DATABASE_PASSWORD` define postgres password
 `DEFAULT_HOST` is used to define base URL to download images.
+`SECRET_KEY_BASE` provide here a random string. It is used to rails in production mode
 
 #### Build docker
 
