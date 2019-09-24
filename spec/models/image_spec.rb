@@ -8,6 +8,10 @@ RSpec.describe Image, type: :model do
   end
 
   context 'validations' do
+    it 'validate description limit' do
+      should validate_length_of(:description).is_at_most(255)
+    end
+
     it 'returns true if allow images png, png and gif format' do
       expect(subject).to allow_content_types(Image::MIMES_FOR_IMAGES).for(:file)
     end
