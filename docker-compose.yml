@@ -9,7 +9,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - "./data/postgres:/var/lib/postgresql/data"
+      - "/var/lib/images-uploading-services/postgresql/data:/var/lib/postgresql/data"
 
   rails:
     build: .
@@ -17,9 +17,12 @@ services:
       IMAGE_UPLOADING_SERVICE_DATABASE_PASSWORD: ${DATABASE_PASSWORD}
       IMAGE_UPLOADING_SERVICE_DATABASE_USER: postgres
       IMAGE_UPLOADING_SERVICE_DATABASE_HOST: postgres
+      IMAGE_UPLOADING_SERVICE_DEFAULT_HOST: ${DEFAULT_HOST}
       RAILS_ENV: production
       PORT: 3000
     ports:
       - "3000:3000"
+    volumes:
+      - "./storage:/app/image-uploading-services/storage"
     depends_on:
       - postgres
