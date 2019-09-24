@@ -9,6 +9,7 @@ RSpec.describe ImagesController, type: :controller do
 
     images = JSON.parse(response.body)
 
+    expect(response.status).to eq(200)
     expect(images.count).to eq(2)
     expect(images.first).to include(
       'owner' => image1.owner.name,

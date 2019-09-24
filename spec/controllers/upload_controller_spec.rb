@@ -96,9 +96,10 @@ RSpec.describe UploadController, type: :controller do
 
       post :create, params: params
 
-      error = JSON.parse(response.body)
+      data = JSON.parse(response.body)
 
-      expect(error['name']).to eq(["can't be blank"])
+      expect(response.status).to eq(400)
+      expect(data['errors']).to include("Name can't be blank")
     end
 
     it 'returns error when not upload file' do
@@ -113,9 +114,10 @@ RSpec.describe UploadController, type: :controller do
 
       post :create, params: params
 
-      error = JSON.parse(response.body)
+      data = JSON.parse(response.body)
 
-      expect(error['images.file']).to eq(["can't be blank"])
+      expect(response.status).to eq(400)
+      expect(data['errors']).to include("Images file can't be blank")
     end
   end
 end
