@@ -5,6 +5,7 @@ class Image < ApplicationRecord
   belongs_to :owner
 
   validates :owner, presence: true
+  validates :description, length: { maximum: 255 }
   validate :validate_content_type
   validate :validate_has_attach
 

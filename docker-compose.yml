@@ -19,6 +19,7 @@ services:
       IMAGE_UPLOADING_SERVICE_DATABASE_HOST: postgres
       IMAGE_UPLOADING_SERVICE_DEFAULT_HOST: ${DEFAULT_HOST}
       RAILS_ENV: production
+      SECRET_KEY_BASE: ${SECRET_KEY_BASE}
       PORT: 3000
     ports:
       - "3000:3000"
