@@ -9,7 +9,7 @@ class UploadController < ApplicationController
     if owner.save
       render json: owner, serializer: OwnerSerializer
     else
-      render json: owner.errors
+      render json: { errors: owner.errors.full_messages }, status: :bad_request
     end
   end
 
@@ -20,6 +20,8 @@ class UploadController < ApplicationController
   end
 
   def attach_new_images(owner)
+    return if owner_params[:images_attributes].blank?
+
     owner_params[:images_attributes].each do |image_param|
       owner.images.build(image_param)
     end
